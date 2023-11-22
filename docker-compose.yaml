@@ -1,0 +1,59 @@
+###################################################################
+# Prolog - docker-compose.yaml
+# Copyright (c) 2023 David L. Whitehurst
+# License: https://github.com/dlwhitehurst/vymain/blob/main/LICENSE
+#
+version: '3.9'
+
+services:
+  userauth:
+    image: local/userauth:0.1.0
+    extra_hosts:
+      - "myhost:172.22.227.36"
+    restart: always
+    ports:
+      - 3004:3004
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=mariadbAdmin123
+      - DB_SCHEMA=virtualyou
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - .:/userauth
+    command: npm start
+
+  personal:
+    image: local/personal:0.1.0
+    extra_hosts:
+      - "myhost:172.22.227.36"
+    restart: always
+    ports:
+      - 3006:3006
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=mariadbAdmin123
+      - DB_SCHEMA=virtualyou
+      - USERAUTH_SERVER_PORT_URL=http://myhost:3004
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - .:/personal
+    command: npm start
+  db:
+    image: mariadb:10.5
+    restart: always
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mariadbAdmin123
+      - MYSQL_DATABASE=virtualyou
+    ports:
+      - 3306:3306
+
