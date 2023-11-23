@@ -1,7 +1,8 @@
 # vymain
 NOTE: Private. Remove when repositories are made public.
 
-LICENSE: MIT
+LICENSE: Apache License 2.0
+
 ## Abstract
 This repository is for the documentation and administration of the VirtualYou 
 project.
