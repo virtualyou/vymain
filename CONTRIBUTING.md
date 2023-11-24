@@ -1,6 +1,11 @@
 # Contributing to VirtualYou
 
-Thank you for your interest in contributing to VirtualYou! We welcome contributions from everyone. By participating in this project, you agree to abide by our code of conduct.
+Thank you for your interest in contributing to VirtualYou! We welcome contributions 
+from everyone. By participating in this project, you agree to abide by our code of 
+conduct.
+
+Send me an email request at dlwhitehurst aT GoOGle mail dOT com and I'll send you
+a slack invite.
 
 ## Getting Started
 
