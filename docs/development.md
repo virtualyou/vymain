@@ -42,14 +42,23 @@ echo "export PATH=$PATH:/home/david/development/vytools/bin" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-NOTE: I created this script in `~/development/sandbox` so that I could tweak the script and test
-things prior to destroying my Windows System Linux (WSL Ubuntu 22.04).
+## ENV and Runtime Success
+All the API and Application UI repositories contain everything you need to run and exercise
+the VirtualYou application however, each component package requires either ENV exports or
+a resident `.env` file. We have created a `_env` file that is not part of `.gitignore`. It
+contains the needed ENV exports but without values. We'll leave that part for you.
+
+Hints:
+1. The database info for local is in this repo's `docker-compose.yaml`.
+2. The userauth API local is `http:localhost:3001`
+
+Things will change for production but we'll discuss that later.
 
 ## Docker Compose Use and Instructions
 Before docker compose is used, `docker` the executable must be installed on your machine.
-Once available, create a folder outside of the cloned repos for use with Docker. The 
-database service uses a volume mount and you'll want to keep (persist) your data as you
-work.
+Once available, create a folder under the `virtualyou` parent folder for use with Docker. 
+The database service uses a volume mount and you'll want to keep (persist) your data as you
+work. This folder is never to be part of any VirtualYou repository.
 
 ```bash
 cd ~/
