@@ -1,6 +1,4 @@
 # vymain
-NOTE: Private. Remove when repositories are made public.
-
 LICENSE: Apache License 2.0
 
 ## Abstract
@@ -8,24 +6,23 @@ This repository is for the documentation and administration of the VirtualYou
 project.
 
 ## Repositories
-- https://github.com/dlwhitehurst/vymain
-- https://github.com/dlwhitehurst/vite-mvp
-- https://github.com/dlwhitehurst/userauth
-- https://github.com/dlwhitehurst/personal
-- https://github.com/dlwhitehurst/medical
-- https://github.com/dlwhitehurst/financial
-- https://github.com/dlwhitehurst/administration
-- https://github.com/dlwhitehurst/vytools
-- https://github.com/dlwhitehurst/vydata
-- https://github.com/dlwhitehurst/vyconfigs
+- https://github.com/virtualyou/vymain
+- https://github.com/virtualyou/vite-mvp
+- https://github.com/virtualyou/userauth
+- https://github.com/virtualyou/personal
+- https://github.com/virtualyou/medical
+- https://github.com/virtualyou/financial
+- https://github.com/virtualyou/administration
+- https://github.com/virtualyou/vytools
+- https://github.com/virtualyou/vydata
+- https://github.com/virtualyou/vydevops
+
+## Start Here
+https://github.com/virtualyou/vymain/blob/main/docs/development.md
 
 ## UI Application
-Text
-Repo
-Hosted
+Later ...
 
 ## APIs
-Text
-Repo
-Hosted
+Later ...
 
