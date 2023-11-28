@@ -47,30 +47,74 @@ git clone git@github.com:virtualyou/vytools.git
 echo "export PATH=$PATH:/home/david/development/virtualyou/vytools/bin" >> ~/.bashrc
 source ~/.bashrc
 ```
+This get's our bash tools in place and now we should clone our repos, configure our docker-compose
+that consists of our database and external APIs. Considering the shell script above, I created a 
+directory called `$VY_PROJECTS` on my development machine. I'm currently using WSL terminals and I
+develop on WebStorm and use Datagrip for a database client. I also set an alias `vy` to go to the 
+project folder quickly.
 
+After `vtools` is installed and on my `$PATH` I will clone all the repos in the project directory
+like so:
+```bash
+setup.sh --utils
+setup.sh --apis
+setup.sh --app
+```
+We now have all the codebase. Let's bring in `docker-compose.yaml`. A `--compose` option is provided
+for `setup.sh` script that copies a docker-compose file from the `vymain` (this repo) into a new 
+folder it creates at `$VY_PROJECTS/docker`. The option also gets your IP and uses `sed -i` to replace
+the `myhost` IPs in the file to your network/internet-facing IP. If it doesn't work for you, just note
+that you need to change the IPs in the file for the compose to run properly.
+```bash
+setup.sh --compose
+```
 ## ENV and Runtime Success
-All the API and Application UI repositories contain everything you need to run and exercise
-the VirtualYou application however, each component package requires either ENV exports or
-a resident `.env` file. We have created a `_env` file that is not part of `.gitignore`. It
-contains the needed ENV exports but without values. We'll leave that part for you.
+To keep things simple and agile between local and production environments, I have options to manage
+the proxy paths, hosts, and cookie domain based on the environment you need the codebase to support.
+Two options are provided in `setup.sh` that write hostnames and paths that are needed for local
+development and production hosting. These are found with the command `setup.sh --help`.
+```bash
+Welcome to the VirtualYou development setup utility.
 
-Hints:
-1. The database info for local is in this repo's `docker-compose.yaml`.
-2. The userauth API local is `http:localhost:3001`
+Usage:
+  (First make sure that you are git-authenticated to GitHub)
+  cd ~/virtualyou  # or where you want the git working directories to live
+  setup.sh [options]
 
-Things will change for production but we'll discuss that later.
 
-## Docker Compose Use and Instructions
-Before docker compose is used, `docker` the executable must be installed on your machine.
-Once available, create a folder under the `virtualyou` parent folder for use with Docker. 
-The database service uses a volume mount and you'll want to keep (persist) your data as you
-work. This folder is never to be part of any VirtualYou repository.
+Options:
+    --shell       Initialize shell environment variables (bash only)
+    --utils       Clone the VirtualYou utilities
+    --compose     Get docker-compose and setup in isolation
+    --apis        Clone the api repos
+    --app         Clone the current UI application
+    --prep-local  Prepare application for local development
+    --prep-prod   Prepare application for production deployment
+```
+They are `--prep-local` and `--prep-prod`. The script makes changes to the `app` repo (the VirtualYou application)
+and the `server.js` file in `userauth` repo or User/Authentication/Authorization API. The options will
+change the app without further modifications but the `userauth` API needs a special versioned docker
+image build and this version needs to be set in your local `docker-compose.yaml`. Final configuration
+of the cookie session should contain `domain: .virtualyou.info` to use subdomains. Please review the 
+script `setup.sh` for the first few uses.
+
+## Running the Application Locally
+When everything is setup correctly and each of the options in `setup.sh` have been run, you should be
+able to:
 
 ```bash
-cd ~/
-mkdir docker
-cd docker
-cp ~/development/vymain/docker-compose.yaml .
+# my alias to projects
+vy 
+
+# run docker compose (everything database and APIs) in background
+dc up -d 
+
+# change directory to the application
+cd app
+
+# run development server
+npm run dev
 ```
-Run docker-compose from the same folder always and in isolation of the cloned VirtualYou
-repositories.
+
+NOTE: The docker images should be built and resident on my Docker hub account publicly. Please file
+an issue with `vymain` if you're having any problems getting the docker images.

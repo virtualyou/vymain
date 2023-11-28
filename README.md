@@ -7,7 +7,7 @@ project.
 
 ## Repositories
 - https://github.com/virtualyou/vymain
-- https://github.com/virtualyou/vite-mvp
+- https://github.com/virtualyou/app
 - https://github.com/virtualyou/userauth
 - https://github.com/virtualyou/personal
 - https://github.com/virtualyou/medical
