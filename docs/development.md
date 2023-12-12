@@ -58,7 +58,7 @@ like so:
 ```bash
 setup.sh --utils
 setup.sh --apis
-setup.sh --app
+setup.sh --src
 ```
 We now have all the codebase. Let's bring in `docker-compose.yaml`. A `--compose` option is provided
 for `setup.sh` script that copies a docker-compose file from the `vymain` (this repo) into a new 
@@ -87,12 +87,12 @@ Options:
     --utils       Clone the VirtualYou utilities
     --compose     Get docker-compose and setup in isolation
     --apis        Clone the api repos
-    --app         Clone the current UI application
+    --src         Clone the current UI application
     --prep-local  Prepare application for local development
     --prep-prod   Prepare application for production deployment
 ```
 They are `--prep-local` and `--prep-prod`. The script makes changes to the `app` repo (the VirtualYou application)
-and the `server.js` file in `userauth` repo or User/Authentication/Authorization API. The options will
+and the `index.ts` file in `userauth` repo or User/Authentication/Authorization API. The options will
 change the app without further modifications but the `userauth` API needs a special versioned docker
 image build and this version needs to be set in your local `docker-compose.yaml`. Final configuration
 of the cookie session should contain `domain: .virtualyou.info` to use subdomains. Please review the 
@@ -110,7 +110,7 @@ vy
 dc up -d 
 
 # change directory to the application
-cd app
+cd src
 
 # run development server
 npm run dev

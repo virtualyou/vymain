@@ -5,13 +5,19 @@
 version: '3.9'
 
 services:
+  #  site:
+  #  image: dlwhitehurst/site:0.1.0-dev
+  #  restart: always
+  #  ports:
+  #    - 5000:5000
+
   userauth:
-    image: dlwhitehurst/userauth:0.1.0
+    image: dlwhitehurst/userauth:0.1.2
     extra_hosts:
-      - "myhost:172.22.227.36"
+      - "myhost:172.25.78.22"
     restart: always
     ports:
-      - 3001:3001
+      - "3001:3001"
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -26,12 +32,12 @@ services:
     command: npm start
 
   personal:
-    image: dlwhitehurst/personal:0.1.0
+    image: dlwhitehurst/personal:0.1.1
     extra_hosts:
-      - "myhost:172.22.227.36"
+      - "myhost:172.25.78.22"
     restart: always
     ports:
-      - 3002:3002
+      - "3002:3002"
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -47,12 +53,12 @@ services:
     command: npm start
 
   medical:
-    image: dlwhitehurst/medical:0.1.0
+    image: dlwhitehurst/medical:0.1.1
     extra_hosts:
-      - "myhost:172.22.227.36"
+      - "myhost:172.25.78.22"
     restart: always
     ports:
-      - 3003:3003
+      - "3003:3003"
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -68,12 +74,12 @@ services:
     command: npm start
 
   financial:
-    image: dlwhitehurst/financial:0.1.0
+    image: dlwhitehurst/financial:0.1.2
     extra_hosts:
-      - "myhost:172.22.227.36"
+      - "myhost:172.25.78.22"
     restart: always
     ports:
-      - 3004:3004
+      - "3004:3004"
     environment:
       - DB_HOST=db
       - DB_USER=root
@@ -89,12 +95,12 @@ services:
     command: npm start
 
   administration:
-    image: dlwhitehurst/administration:0.1.0
+    image: dlwhitehurst/administration:0.1.4
     extra_hosts:
-      - "myhost:172.22.227.36"
+      - "myhost:172.25.78.22"
     restart: always
     ports:
-      - 3005:3005
+      - "3005:3005"
     environment:
       - DB_HOST=db
       - DB_USER=root
