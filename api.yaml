@@ -1,16 +1,6 @@
-###################################################################
-# Copyright (c) 2023 David L. Whitehurst
-# License: https://github.com/dlwhitehurst/vymain/blob/main/LICENSE
-#
 version: '3.9'
 
 services:
-  app:
-    image: dlwhitehurst/app:0.2.7-align
-    restart: always
-    ports:
-      - "80:80"
-
   userauth:
     image: dlwhitehurst/userauth:0.1.5-align
     extra_hosts:
