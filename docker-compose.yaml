@@ -115,6 +115,29 @@ services:
       - .:/administration
     command: npm start
 
+  legal:
+    image: dlwhitehurst/legal:0.1.0-dev
+    extra_hosts:
+      - "myhost:172.25.78.22"
+    restart: always
+    ports:
+      - "3006:3006"
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=mariadbAdmin123
+      - DB_SCHEMA=virtualyou
+      - USERAUTH_SERVER_PORT_URL=http://myhost:3001
+      - NODE_ENV=
+      - PORT=3006
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - .:/legal
+    command: npm start
+
   db:
     image: mariadb:10.5
     restart: always

@@ -3,7 +3,7 @@ Convert all Node-Express APIs to Typescript
 
 ## Status
 
-![Status](https://img.shields.io/badge/status-proposed-yellow) 
+![Status](https://img.shields.io/badge/status-accepted-green) 
 
 ## Context
 
