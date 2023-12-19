@@ -1,10 +1,17 @@
 version: '3.9'
 
 services:
+  speech:
+    image: dlwhitehurst/speech:0.1.0-proto
+    restart: always
+    ports:
+      - "5000:8000"
+
+
   userauth:
-    image: dlwhitehurst/userauth:0.1.5-align
-    extra_hosts:
-      - "myhost:172.25.78.22"
+    image: dlwhitehurst/userauth:0.1.8-nodep
+      #    extra_hosts:
+      #- "myhost:172.22.227.36"
     restart: always
     ports:
       - "3001:3001"
@@ -23,9 +30,9 @@ services:
     command: yarn start
 
   personal:
-    image: dlwhitehurst/personal:0.1.5-align
-    extra_hosts:
-      - "myhost:172.25.78.22"
+    image: dlwhitehurst/personal:0.1.8-nodep
+      #extra_hosts:
+      #  - "auth:172.22.227.36"
     restart: always
     ports:
       - "3002:3002"
@@ -34,7 +41,6 @@ services:
       - DB_USER=root
       - DB_PASSWORD=mariadbAdmin123
       - DB_SCHEMA=virtualyou
-      - USERAUTH_SERVER_PORT_URL=http://myhost:3001
       - PORT=3002
     depends_on:
       - db
@@ -45,9 +51,9 @@ services:
     command: yarn start
 
   medical:
-    image: dlwhitehurst/medical:0.1.5-align
-    extra_hosts:
-      - "myhost:172.25.78.22"
+    image: dlwhitehurst/medical:0.1.8-nodep
+      #extra_hosts:
+      #- "myhost:172.22.227.36"
     restart: always
     ports:
       - "3003:3003"
@@ -56,7 +62,6 @@ services:
       - DB_USER=root
       - DB_PASSWORD=mariadbAdmin123
       - DB_SCHEMA=virtualyou
-      - USERAUTH_SERVER_PORT_URL=http://myhost:3001
       - PORT=3003
     depends_on:
       - db
@@ -67,9 +72,9 @@ services:
     command: npm start
 
   financial:
-    image: dlwhitehurst/financial:0.1.5-align
-    extra_hosts:
-      - "myhost:172.25.78.22"
+    image: dlwhitehurst/financial:0.1.8-nodep
+      #extra_hosts:
+      #- "myhost:172.22.227.36"
     restart: always
     ports:
       - "3004:3004"
@@ -78,7 +83,6 @@ services:
       - DB_USER=root
       - DB_PASSWORD=mariadbAdmin123
       - DB_SCHEMA=virtualyou
-      - USERAUTH_SERVER_PORT_URL=http://myhost:3001
       - PORT=3004
     depends_on:
       - db
@@ -89,9 +93,9 @@ services:
     command: yarn start
 
   administration:
-    image: dlwhitehurst/administration:0.1.5-align
-    extra_hosts:
-      - "myhost:172.25.78.22"
+    image: dlwhitehurst/administration:0.1.8-nodep
+      #extra_hosts:
+      #- "myhost:172.22.227.36"
     restart: always
     ports:
       - "3005:3005"
@@ -100,7 +104,6 @@ services:
       - DB_USER=root
       - DB_PASSWORD=mariadbAdmin123
       - DB_SCHEMA=virtualyou
-      - USERAUTH_SERVER_PORT_URL=http://myhost:3001
       - PORT=3005
     depends_on:
       - db
@@ -111,9 +114,9 @@ services:
     command: npm start
 
   legal:
-    image: dlwhitehurst/legal:0.1.5-align
-    extra_hosts:
-      - "myhost:172.25.78.22"
+    image: dlwhitehurst/legal:0.1.8-nodep
+      #extra_hosts:
+      #- "myhost:172.22.227.36"
     restart: always
     ports:
       - "3006:3006"
@@ -122,7 +125,6 @@ services:
       - DB_USER=root
       - DB_PASSWORD=mariadbAdmin123
       - DB_SCHEMA=virtualyou
-      - USERAUTH_SERVER_PORT_URL=http://myhost:3001
       - PORT=3006
     depends_on:
       - db
