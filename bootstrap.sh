@@ -13,6 +13,6 @@ mkdir ~/development/virtualyou
 cd ~/development/virtualyou
 git clone git@github.com:virtualyou/vytools.git
 
-# update PATH with tools bin directory
+# update PATH with tools bin directory and access now to bash scripts
 echo "export PATH=$PATH:/home/david/development/virtualyou/vytools/bin" >> ~/.bashrc
 source ~/.bashrc

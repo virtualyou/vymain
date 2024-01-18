@@ -1,2 +1,3 @@
 # MongoDB
-Under construction ...
+
+This content is pending architectural decision.
